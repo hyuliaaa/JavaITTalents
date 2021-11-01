@@ -1,0 +1,38 @@
+public class SelectionSort {
+
+
+//търси индекса на най-малкия елемент и го поставя на 1 позиция и тн.
+//прави най-малък брой размествания
+//дава предимство в задачи, които сравняването е бърза операция, а разместването е бавна :)
+    public static void main(String[] args) {
+        int[] arr = {3,1,7,5};
+        selectionSort(arr);
+        print(arr);
+    }
+
+    static void selectionSort(int[] arr) {
+
+        for(int i =0; i <arr.length;i++) {
+            int minEl = arr[i];
+            int minIn = i;
+            for (int j = i+1; j < arr.length; j++) {
+                if (arr[j] < minEl) {
+                    minEl = arr[j];
+                    minIn = j;
+                }
+            }
+
+            int tmp = arr[i];
+            arr[i] = arr[minIn];
+            arr[minIn] = tmp;
+        }
+
+    }
+
+    static void print(int[] arr) {
+        for(int i =0; i <arr.length;i++){
+            System.out.print(arr[i]+" ");
+        }
+    }
+}
+
