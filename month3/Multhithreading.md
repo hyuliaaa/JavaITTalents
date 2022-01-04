@@ -19,6 +19,8 @@ wait by some other thread.
 When a thread is running and we want that thread to delay for some time by using sleep and we go to timed wait state
 And when the thread wakes up it will go to running state. We also have blocked state.
 
+
+### Two threads accessing a single file
 If we have a file and we have two thread that access this file, we should not allow both threads to access 
 the same file at the same time. If one thread is accessing, the other should wait. If one thread finishes
 it should inform the other that is waiting that the first one has finished work. Think of printers and people
