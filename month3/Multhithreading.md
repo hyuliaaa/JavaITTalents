@@ -7,6 +7,32 @@ Multi-tasking - only one user but multiple tasks can run simultaniously.
 
 # MultiThreading In Java
 Multithreading can be achieved by - Thread Class or Runnable Interface.   
+```Java
+import java.util.*;
+
+class Test extends Thread{
+    @Override
+    public void run() {
+        int i = 1;
+        while (true){
+            System.out.println((i++) + "Hello");
+        }
+    }
+}
+class Main {
+    public static void main(String[] args) {
+
+        Test t = new Test();
+        t.start();
+
+        int i = 1;
+        while (true){
+            System.out.println((i++) + "World");
+        }
+    }
+}
+
+```
 
 ## States of a Thread
 ![sh](https://user-images.githubusercontent.com/54545875/148078838-24b8bacd-1787-49d7-a69f-13c012112562.png)
@@ -22,7 +48,7 @@ And when the thread wakes up it will go to running state. We also have blocked s
 
 
 ### Two threads accessing a single file
-If we have a file and we have two thread that access this file, we should not allow both threads to access 
+If we have a file and we have two threads that access this file, we should not allow both threads to access 
 the same file at the same time. If one thread is accessing, the other should wait. If one thread finishes
 it should inform the other that is waiting that the first one has finished work. Think of printers and people
 that use them as a good example.
