@@ -35,7 +35,8 @@ class Main {
 ```
 
 ## States of a Thread
-![sh](https://user-images.githubusercontent.com/54545875/148078838-24b8bacd-1787-49d7-a69f-13c012112562.png)
+![sh](https://user-images.githubusercontent.com/54545875/148078838-24b8bacd-1787-49d7-a69f-13c012112562.png) 
+<br> </br>
 When we create an object of a thread in will be in new state. If we want to run it, we have to call
 the start method. When we call start method our object will run into ready state, it means it is ready to run.
 Start will call run method and it will be in running state.  
