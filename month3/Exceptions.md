@@ -156,3 +156,40 @@ class Main {
 }
 
 ```
+
+## Throw & throws
+``` Java
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+
+class Main {
+
+
+
+    static void meth1(){
+        int a = 0;
+        try {
+            a = area(-5,10);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        System.out.println(a);
+    }
+
+    private static int area(int a, int b) throws Exception {
+        if(a < 0 || b < 0){
+            throw new Exception("a or b is negative number");
+        }
+
+        int area = a * b;
+        return area;
+
+    }
+
+    public static void main(String[] args) {
+        meth1();
+    }
+}
+
+```
