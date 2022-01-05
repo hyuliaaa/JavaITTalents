@@ -1,4 +1,4 @@
-# Exception
+# Exceptions
 Exeption is a problem that arises during the execution of a program. When exceotion occurrs the normal flow of the program is disrupted.
 ## Unchecked & Checked Exceptions
 ### Unchecked Exceptions
