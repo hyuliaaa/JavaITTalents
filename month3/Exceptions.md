@@ -199,7 +199,7 @@ With custom exception class:
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-class NegativeDimentionException extends Exception{
+class NegativeDimensionException extends Exception{
     @Override
     public String toString() {
         return "Negative dimension given";
@@ -214,16 +214,16 @@ class Main {
         int a = 0;
         try {
             a = area(-5,10);
-        } catch (NegativeDimentionException e) {
+        } catch (NegativeDimensionException e) {
             System.out.println(e);
         }
 
         System.out.println(a);
     }
 
-    private static int area(int a, int b) throws NegativeDimentionException {
+    private static int area(int a, int b) throws NegativeDimensionException {
         if(a < 0 || b < 0){
-            throw new NegativeDimentionException();
+            throw new NegativeDimensionException();
         }
 
         int area = a * b;
