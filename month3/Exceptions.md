@@ -193,3 +193,48 @@ class Main {
 }
 
 ```
+
+With custom exception class:
+``` Java
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+class NegativeDimentionException extends Exception{
+    @Override
+    public String toString() {
+        return "Negative dimension given";
+    }
+}
+
+class Main {
+
+
+
+    static void meth1(){
+        int a = 0;
+        try {
+            a = area(-5,10);
+        } catch (NegativeDimentionException e) {
+            System.out.println(e);
+        }
+
+        System.out.println(a);
+    }
+
+    private static int area(int a, int b) throws NegativeDimentionException {
+        if(a < 0 || b < 0){
+            throw new NegativeDimentionException();
+        }
+
+        int area = a * b;
+        return area;
+
+    }
+
+    public static void main(String[] args) {
+        meth1();
+    }
+}
+
+```
+
