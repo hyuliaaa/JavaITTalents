@@ -34,6 +34,54 @@ class Main {
 
 ```
 
+## Examples extending Thread Class & using Runnable Interface
+
+``` Java
+public class Horse extends Thread{
+
+    public void gallop(){
+        for(int i =1 ; i <= 10; i++){
+            System.out.println("Horse gallops for " + i*10);
+        }
+    }
+
+    @Override
+    public void run() {
+        gallop();
+    }
+}
+```
+```Java
+public class Mare implements Runnable{
+    @Override
+    public void run() {
+        for(int i = 1; i <=10; i++){
+            System.out.println("Mare is running" + i*10);
+        }
+    }
+}
+
+```
+``` Java
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+
+
+class Main {
+    
+    public static void main(String[] args) {
+
+        Horse h = new Horse();
+        //for interface 
+        Thread t = new Thread(new Mare());
+        t.start();
+        h.start();
+    }
+}
+
+```
+
 ## States of a Thread
 ![sh](https://user-images.githubusercontent.com/54545875/148078838-24b8bacd-1787-49d7-a69f-13c012112562.png) 
 <br> </br>
