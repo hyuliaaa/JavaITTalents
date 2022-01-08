@@ -81,6 +81,27 @@ class Main {
 }
 
 ```
+## Anonymous class
+``` Java
+   Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                for(int i = 1; i <=10; i++){
+                    System.out.println("Gazelata bqga " + i*10);
+                }
+            }
+        };
+        new Thread(r).start();
+```
+## Lambda
+``` Java
+        Runnable r = () -> {
+            for(int i = 1; i <=10; i++){
+                System.out.println("Gazelata bqga " + i*10);
+            }
+        };
+        new Thread(r).start();
+```
 
 ## States of a Thread
 ![sh](https://user-images.githubusercontent.com/54545875/148078838-24b8bacd-1787-49d7-a69f-13c012112562.png) 
