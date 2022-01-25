@@ -123,3 +123,19 @@ SELECT first_name,last_name
 FROM employees
 join departments on employees.department_id = departments.department_id
 where (department_name = "Sales" or department_name = "Finance") and year(hire_date) between 1995 and 2000;
+
+
+# 26 
+
+select *
+from employees
+join departments on employees.department_id = departments.department_id
+join job_history on departments.department_id = job_history.department_id
+where job_history.department_id = 80;
+
+
+# 27	
+select  CONCAT(E1.FIRST_NAME,' ',E1.LAST_NAME,
+' is managed by ', e2.first_name,' ' ,e2.LAST_NAME) as MSG
+from employees e1
+join employees e2 on e1.manager_id = e2.employee_id;
