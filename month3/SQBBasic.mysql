@@ -150,3 +150,10 @@ left join departments on e.department_id = departments.department_id
 left join locations on departments.location_id = locations.location_id
 left join countries on locations.country_id = countries.country_id
 left join regions on countries.region_id = regions.region_id;
+
+# 31
+select employees.first_name,employees.last_name,employees.job_id
+from job_history a
+join job_history m on a.employee_id = m.employee_id
+join employees on a.employee_id = employees.employee_id
+where a.job_id = 'AC_ACCOUNT' and m.job_id = 'AC_MGR'
