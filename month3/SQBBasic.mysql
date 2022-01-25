@@ -90,21 +90,11 @@ from locations l;
 
 # 23
 
-select * from employees;
+
 
 SELECT *
-FROM employees E1
-JOIN employees E2 ON E1.manager_id=E2.employee_id;
-
-SELECT CONCAT(E1.FIRST_NAME,' ',E1.LAST_NAME,
-' is managed by ', e2.LAST_NAME) as MSG
-FROM employees E1
-JOIN employees E2 ON E1.manager_id=E2.employee_id;
-
-SELECT distinct Department_name,E2.first_name,E2.last_name
-FROM departments
-JOIN employees E1 ON departments.manager_id = E1.manager_id
-JOIN employees E2 ON E1.manager_id = E2.employee_id;
+FROM departments 
+JOIN employees ON (departments.manager_id = employees.employee_id) ;
 
 
 SELECT * 
