@@ -140,3 +140,13 @@ join departments on employees.department_id = departments.department_id
 join locations on departments.location_id = locations.location_id
 join countries on locations.country_id = countries.country_id
 join regions on countries.region_id = regions.region_id;
+
+# 30
+select concat (e.first_name,' ',e.last_name, 'is managed by ', ifnull(m.first_name, 'No manager')) as Menigment, department_name, locations.city, countries.country_name,regions.region_name
+from employees e
+left join employees m on e.manager_id = m.employee_id
+join jobs on e.job_id = jobs.job_id
+left join departments on e.department_id = departments.department_id
+left join locations on departments.location_id = locations.location_id
+left join countries on locations.country_id = countries.country_id
+left join regions on countries.region_id = regions.region_id;
