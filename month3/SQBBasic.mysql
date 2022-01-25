@@ -1,0 +1,93 @@
+use hr;
+select *
+FROM employees;
+
+SELECT department_name
+FROM departments;
+
+SELECT salary
+FROM employees;
+
+SELECT salary / 12 AS month_salary
+FROM employees;
+
+SELECT (salary / 12) / 20 AS day_salary
+FROM employees;
+
+SELECT ((salary / 12) /20)/8 AS hour_salary
+FROM employees;
+
+
+select distinct salary
+from employees;
+
+select department_name
+from departments
+union
+select region_name
+from regions
+union
+select country_name
+from countries;
+
+
+select *
+from employees
+where job_id = "AC_MGR";
+
+select first_name
+from employees
+where first_name like "Sa%";
+
+select last_name
+from employees
+where last_name like "%ei%";
+
+select first_name
+from employees
+where salary between 3000 and 5000;
+
+select first_name
+from employees
+where salary >=3000 and salary <=5000;
+
+
+# 11 
+SELECT SALARY
+FROM employees
+WHERE SALARY BETWEEN 2000 AND 15000 AND salary NOT IN (select salary from employees where salary between 5000 and 10000);
+
+SELECT * FROM employees WHERE salary NOT BETWEEN 5000 AND 10000 AND salary > 2000 AND salary < 15000;
+
+SELECT * 
+FROM hr.employees WHERE ((salary BETWEEN 2000 AND 15000) AND (salary NOT BETWEEN 5000 AND 10000));
+
+# 12
+select *
+from employees
+where salary in (2500,4000,5000);
+
+# 13 - finish
+select * 
+from locations;
+
+
+
+# 20
+select *
+from departments
+right join locations on departments.location_id = locations.location_id;
+
+# 21
+select locations.street_address,departments.department_name
+from locations
+left join departments on departments.location_id = locations.location_id ;
+
+# 22 - 
+select l.street_address,(select d.department_name from departments d where l.location_id = d.location_id)
+from locations l;
+
+
+
+
+
