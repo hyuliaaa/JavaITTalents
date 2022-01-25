@@ -83,11 +83,43 @@ select locations.street_address,departments.department_name
 from locations
 left join departments on departments.location_id = locations.location_id ;
 
-# 22 - 
+# 22 - finishhh 
 select l.street_address,(select d.department_name from departments d where l.location_id = d.location_id)
 from locations l;
 
 
+# 23
+
+select * from employees;
+
+SELECT *
+FROM employees E1
+JOIN employees E2 ON E1.manager_id=E2.employee_id;
+
+SELECT CONCAT(E1.FIRST_NAME,' ',E1.LAST_NAME,
+' is managed by ', e2.LAST_NAME) as MSG
+FROM employees E1
+JOIN employees E2 ON E1.manager_id=E2.employee_id;
+
+SELECT distinct Department_name,E2.first_name,E2.last_name
+FROM departments
+JOIN employees E1 ON departments.manager_id = E1.manager_id
+JOIN employees E2 ON E1.manager_id = E2.employee_id;
 
 
+SELECT * 
+FROM departments;
+SELECT *FROM employees;
 
+# 24
+SELECT DISTINCT  Department_name,E2.first_name,E2.last_name, city
+FROM departments
+JOIN employees E1 ON departments.manager_id = E1.manager_id
+JOIN employees E2 ON E1.manager_id = E2.employee_id
+JOIN locations ON departments.location_id = locations.location_id;
+
+# 25
+SELECT first_name,last_name
+FROM employees
+join departments on employees.department_id = departments.department_id
+where (department_name = "Sales" or department_name = "Finance") and year(hire_date) between 1995 and 2000;
