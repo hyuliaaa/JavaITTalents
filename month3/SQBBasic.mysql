@@ -102,11 +102,12 @@ FROM departments;
 SELECT *FROM employees;
 
 # 24
-SELECT DISTINCT  Department_name,E2.first_name,E2.last_name, city
-FROM departments
-JOIN employees E1 ON departments.manager_id = E1.manager_id
-JOIN employees E2 ON E1.manager_id = E2.employee_id
-JOIN locations ON departments.location_id = locations.location_id;
+
+
+SELECT department_name,first_name,last_name,locations.city
+FROM departments 
+JOIN employees ON (departments.manager_id = employees.employee_id)
+join locations on departments.location_id = locations.location_id
 
 # 25
 SELECT first_name,last_name
