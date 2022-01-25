@@ -126,10 +126,10 @@ where job_history.department_id = 80;
 
 
 # 27	
-select  CONCAT(E1.FIRST_NAME,' ',E1.LAST_NAME,
-' is managed by ', e2.first_name,' ' ,e2.LAST_NAME) as MSG
-from employees e1
-join employees e2 on e1.manager_id = e2.employee_id;
+select concat (e.first_name,' ',e.last_name, 'is managed by ', m.first_name,' ',m.last_name) as Menigment
+from employees e
+join employees m on e.manager_id = m.employee_id;
+
 
 
 # 29
