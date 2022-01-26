@@ -73,6 +73,32 @@ from regions
 left join countries using (region_id)
 left join locations using (country_id)
 left join departments using (location_id)
-left join employees using (department_id)
+right join employees using (department_id)
 group by region_name;
 
+# 11
+
+# 12
+select first_name, last_name, salary
+from employees
+where salary in (select min(salary) from employees);
+
+start transaction;
+insert into employees 
+(employee_id, first_name, last_name, email, phone_number, hire_date, job_id, salary,commission_pct ,manager_id, department_id) 
+values (250,'elio', 'isa','RGDG',12344556,current_date(),'AC_ACCOUNT',2100,null,205,110);
+rollback;
+
+
+
+# 13
+
+select first_name,last_name, salary
+from employees
+where salary < (select min(salary) from employees) * 1.1 ;
+
+
+# 15
+select *
+from employees
+where length(last_name) = 5;
