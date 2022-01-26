@@ -40,5 +40,39 @@ join locations using (location_id)
 group by department_id;
 
 # 8  - find for each department and for each manager the count of all corresponding employees.
+# not finished
 
+select * 
+from employees e
+join employees m on e.manager_id = m.employee_id;
+
+select *
+from employees
+join departments using (department_id);
+
+select department_name, employees.first_name, count(employees.manager_id)
+from departments
+left join employees on departments.manager_id = employees.employee_id
+group by departments.department_id, employees.manager_id;
+
+
+select * from departments;
+# 9
+
+select  m.first_name,m.last_name, departments.department_name,city
+from employees m
+join employees e on m.employee_id = e.manager_id
+join departments on m.department_id = departments.department_id
+join locations on departments.location_id = locations.location_id
+group by e.manager_id
+having count(e.manager_id) = 5;
+
+# 10
+select region_name, count(employees.employee_id)
+from regions
+left join countries using (region_id)
+left join locations using (country_id)
+left join departments using (location_id)
+left join employees using (department_id)
+group by region_name;
 
