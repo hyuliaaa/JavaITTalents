@@ -1,0 +1,44 @@
+use hr;
+
+# 1
+select avg(salary) as average_salary
+from employees
+join departments on employees.department_id = departments.department_id
+where departments.department_name = 'Sales';
+
+# 2
+select count(*)
+from employees
+join departments on employees.department_id = departments.department_id
+where department_name = 'Sales';
+
+# 3 - number of all locations where the company has an office
+select count(distinct city) as location_number
+from locations;
+
+# 4
+select count(*) as with_manager
+from departments
+where manager_id is not null;
+
+# 5
+select count(department_id) as no_manager
+from departments
+where manager_id is null;
+
+# 6
+select  department_name, avg(salary) as avg_salary
+from employees
+join departments using (department_id)
+group by department_id;
+
+# 7 
+select department_name, city, count(employee_id) as employee_number
+from employees
+right join departments using (department_id)
+join locations using (location_id)
+group by department_id;
+
+# 8  - find for each department and for each manager the count of all corresponding employees.
+
+
