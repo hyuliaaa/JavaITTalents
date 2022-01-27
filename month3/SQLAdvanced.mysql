@@ -39,26 +39,21 @@ right join departments using (department_id)
 join locations using (location_id)
 group by department_id;
 
-# 8  - find for each department and for each manager the count of all corresponding employees.
-# not finished
-
-select * 
-from employees e
-join employees m on e.manager_id = m.employee_id;
-
-select *
-from employees
-join departments using (department_id);
-
-select department_name, employees.first_name, count(employees.manager_id)
+# 8 
+select departments.department_name,m.first_name,m.last_name, count(e.manager_id) AS 'employee_number'
 from departments
-left join employees on departments.manager_id = employees.employee_id
-group by departments.department_id, employees.manager_id;
+left join employees m on departments.manager_id = m.employee_id
+join employees e on m.employee_id = e.manager_id
+group by departments.department_id, e.manager_id;
+
+SELECT d.department_name, count(*) as manager_count from departments as d
+join employees as e on (e.manager_id=d.manager_id)
+where d.manager_id is not null
+group by e.manager_id;
 
 
-select * from departments;
+
 # 9
-
 select  m.first_name,m.last_name, departments.department_name,city
 from employees m
 join employees e on m.employee_id = e.manager_id
@@ -77,6 +72,11 @@ right join employees using (department_id)
 group by region_name;
 
 # 11
+select department_name, job_title, count(job_title)
+from employees
+join jobs using (job_id)
+right join departments using (department_id)
+group by departments.department_id, job_id;
 
 # 12
 select first_name, last_name, salary
@@ -98,6 +98,7 @@ from employees
 where salary < (select min(salary) from employees) * 1.1 ;
 
 # 14
+
 
 # 15
 select *
@@ -121,5 +122,6 @@ left join employees on departments.manager_id = employees.employee_id;
 SELECT M.FIRST_NAME, M.LAST_NAME, IF(COUNT(E.EMPLOYEE_ID) = 0, 'JUST AN EMPLOYEE', IF(COUNT(E.EMPLOYEE_ID) = 1, 'Junior manager', COUNT(E.EMPLOYEE_ID))) AS TXT 
 FROM EMPLOYEES M
 LEFT JOIN EMPLOYEES E ON M.EMPLOYEE_ID = E.MANAGER_ID
-GROUP BY M.FIRST_NAME;
+GROUP BY M.FIRST_NAME;	
+
 
