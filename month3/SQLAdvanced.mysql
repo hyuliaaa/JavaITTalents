@@ -122,3 +122,167 @@ SELECT M.FIRST_NAME, M.LAST_NAME, IF(COUNT(E.EMPLOYEE_ID) = 0, 'JUST AN EMPLOYEE
 FROM EMPLOYEES M
 LEFT JOIN EMPLOYEES E ON M.EMPLOYEE_ID = E.MANAGER_ID
 GROUP BY M.FIRST_NAME;	
+
+
+# 19 
+SELECT CONCAT(current_time(),' ',DAY(NOW()),' ',month(NOW()),' ',YEAR(NOW())) AS DATE_TIME;
+SELECT date_add(current_date(), INTERVAL 7 DAY) AS DATE_AFTER_WEEK;
+
+# 20
+
+CREATE TABLE USERS(
+user_id int auto_increment,
+primary key(user_id),
+username VARCHAR(50),
+password VARCHAR (50) not null,
+last_login timestamp
+);
+
+
+INSERT INTO USERS 
+(username, password,last_login)
+VALUES
+('Maria','mara123',now());
+
+INSERT INTO USERS 
+(username, password,last_login)
+VALUES
+('Vanya','vanchet0',now());
+
+
+INSERT INTO USERS 
+(username, password,last_login)
+VALUES
+('Nina','ninche1',date_sub(now(),interval 7 day));
+
+INSERT INTO USERS 
+(username, password,last_login, group_id)
+VALUES
+('Vilisvala','vili12',date_sub(now(),interval 5 day),3);
+
+# 21
+create view v_users as 
+SELECT *
+FROM USERS
+WHERE DAY(last_login) = day(now());
+
+select * from v_users;
+drop view v_users;
+
+# 22 Write a SQL statement to create a table GROUPS. Groups should have
+# unique name (use unique constraint). 
+CREATE TABLE GROUPSS(
+name varchar(50),
+unique(name)
+);
+
+
+# 23
+ALTER TABLE GROUPSS
+ADD column group_id int first;
+
+alter table groupss
+drop column group_id;
+
+alter table groupss 
+add constraint g_id primary key(group_id);
+
+ALTER TABLE groupss 
+MODIFY group_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY;
+
+alter table users
+add column group_id int;
+
+alter table users 
+drop column group_id;
+
+alter table users
+add constraint g_id_fk foreign key(group_id) references groupss(group_id);
+
+
+ALTER TABLE groupss MODIFY group_id INT NOT NULL AUTO_INCREMENT;
+
+insert into groupss
+(name)
+values('catloves');
+
+insert into groupss
+(name)
+values('doglovers');
+
+insert into groupss
+(name)
+values('rabbitlovers');
+
+
+
+
+
+select *
+from users
+join groupss using(group_id);
+
+alter table users
+add column fullname varchar(100) AFTER user_id;
+
+update users
+SET fullname ='Maria Lozanova'
+where user_id = 1;
+
+update users
+SET fullname ='Vanya Dobreva'
+where user_id = 2;
+
+update users
+SET fullname ='Nina Petelova'
+where user_id = 3;
+
+update users
+SET fullname ='Vilislava Andonova'
+where user_id = 4;
+
+
+select * from groupss;
+select * from users;
+select * from employees;
+
+
+insert into users(fullname,username,password)
+select concat(first_name,' ',last_name),email,' '
+from employees;
+
+
+
+update users
+SET last_login = date_sub(now(), interval 20 year)
+where user_id >=5 and user_id <=20; 
+
+
+
+# 27 
+update users 
+set password = null
+where last_login < '10.03.2006';
+
+
+select * from users;
+
+# remove not null constraint
+ALTER TABLE users MODIFY COLUMN password varchar(50) null; 
+
+
+delete from users
+where password is null or password = ' ';
+
+# 30
+create table WORKHOURS(
+	employee_id integer,
+    primary key(employee_id),
+    foreign key(employee_id) references employees(employee_id),
+    date timestamp,
+    task varchar(50),
+    hours int,
+    comments varchar (100)
+
+);
+	
