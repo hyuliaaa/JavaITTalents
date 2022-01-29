@@ -22,3 +22,11 @@ public class UserManager {
         }
     }
 }
+
+
+public class UserDemo {
+
+    public static void main(String[] args) {
+        new UserManager().addUser("Milena Gerinova", "milenche","milenka123");
+    }
+}
