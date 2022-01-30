@@ -1,5 +1,5 @@
 # Exceptions
-Exeption is a problem that arises during the execution of a program. When exceotion occurrs the normal flow of the program is disrupted.
+Exeption is a problem that arises during the execution of a program. When exception occurrs the normal flow of the program is disrupted.
 ## Unchecked & Checked Exceptions
 ### Unchecked Exceptions
 Unchecked Exceptions are exceptions that are cauth in run-time of the program. If we want we can catch them, if we don't want our program will blow up.  
