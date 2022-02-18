@@ -1,0 +1,15 @@
+### add
+POST localhost:9999/posts
+Content-Type: application/json
+
+{
+  "title" : "gf"
+}
+###
+GET localhost:9999/posts/1
+
+### like
+POST localhost:9999/posts/4/like
+
+### like
+POST localhost:9999/posts/4/dislike
